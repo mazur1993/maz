@@ -9,5 +9,6 @@ node default {
     #type    => 'jdk'
   #}
   class {'java8': }
+  class {'maven': }
   #class {'scala': }
 }

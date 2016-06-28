@@ -27,3 +27,5 @@ resources:
         git clone https://github.com/mazur1993/maz.git
         echo "sudo puppet apply puppet.pp" >> /tmp/log
         sudo puppet apply puppet.pp
+        echo "sudo unzip testproject1.zip" >> /tmp/log
+        sudo unzip testproject1.zip
