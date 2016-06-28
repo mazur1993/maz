@@ -1,0 +1,29 @@
+heat_template_version: 2013-05-23
+
+description: Simple template to deploy a single compute instance
+
+resources:
+  my_instance:
+    type: OS::Nova::Server
+    properties:
+      key_name: mazur
+      image: ubuntu-trusty
+      flavor: m1.small
+      networks:
+        - network: local
+      user_data: |
+        #!/bin/bash
+        sudo chsh -s /bin/bash ec2-user
+        cd /home/ec2-user
+        echo "sudo apt-get update" >> /tmp/log
+        sudo apt-get update
+        echo "sudo apt-get install -y puppet git" >> /tmp/log
+        sudo apt-get install -y puppet git
+        echo "sudo puppet module install aco-oracle_java" >> /tmp/log
+        sudo puppet module install aco-oracle_java
+        echo "sudo puppet module install maestrodev-maven" >> /tmp/log
+        sudo puppet module install maestrodev-maven
+        echo "git clone https://github.com/mazur1993/maz.git" >> /tmp/log
+        git clone https://github.com/mazur1993/maz.git
+        echo "sudo puppet apply puppet.pp" >> /tmp/log
+        sudo puppet apply puppet.pp
