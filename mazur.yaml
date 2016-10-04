@@ -7,10 +7,10 @@ resources:
     type: OS::Nova::Server
     properties:
       key_name: mazur
-      image: ubuntu-trusty
+      image: laboshinl-ubuntu
       flavor: m1.small
       networks:
-        - network: local
+        - network: cloud
       user_data: |
         #!/bin/bash
         sudo chsh -s /bin/bash ec2-user
